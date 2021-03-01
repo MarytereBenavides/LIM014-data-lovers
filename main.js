@@ -67,7 +67,7 @@ function drawCharactersPage(index, arrayOfCharacters) {
 
     elementDiv.innerHTML = `
       <h3 class="h3List" >${result.name}</h3>
-      <img class="imageList" src="${result.image}" alt="${result.name}"/>
+      <img class="imageList" loading="lazy" src="${result.image}" alt="${result.name}"/>
       <section class="dataCard">
         <p> Status: <span> ${result.status} </span></p>
         <p> Especie: <span> ${result.species} </span></p>
@@ -303,4 +303,18 @@ function searchFilter() {
     orderAll.classList.remove("hide");
     // notFound.style.visibility = "hidden";
   }
+
+
 }
+
+//*************************clean filter *****************/
+let cleanFilter = document.getElementById("buttonCleanFilter");
+cleanFilter.addEventListener("click", () => {
+  let selectTags = document.getElementsByTagName("select");
+
+for(var i = 0; i < selectTags.length; i++) {
+  selectTags[i].selectedIndex =0;
+}  
+searchFilter();
+})
+
