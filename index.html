@@ -58,7 +58,6 @@
         <option value="Dead">Dead</option>
         <option value="unknown">Unknown</option>
       </select> 
-    </br>
       <p class="filterId">Species</p>
       <select id="species">
         <option value="">--Select--</option>
@@ -74,7 +73,7 @@
         <option value="Robot">Robot</option>
         <option value="Vampire">Vampire</option>
         <option value="unknown">unknown</option>
-      </select> </br>
+      </select> 
       <p class="filterId">Gender</p>
       <select id="gender">
         <option value="">--Select--</option>
@@ -82,9 +81,8 @@
         <option value="Male">Male</option>
         <option value="Genderless">Genderless</option>
         <option value="unknown">Unknown</option>
-      </select></br>
-      <p class="filterId">Origin</p>
       </select>
+      <p class="filterId">Origin</p>
       <select id="origin">
         <option value="">--Select--</option>
         <option value="Abadango">Abadango</option>
@@ -149,7 +147,7 @@
         <option value="Venzenulon 7">Venzenulon 7</option>
         <option value="Zeep Xanflorp's Miniverse">Zeep Xanflorp's Miniverse</option>
         <option value="unknown">unknown</option>
-      </select></br>
+      </select>
       <p class="filterId">Episode</p>
 
       <select id="episodes">
@@ -182,8 +180,7 @@
   <nav>
     <section class="nameOrder hide" id="subheaderSection">
       <section class="subheaderSection">
-        <input type="search" placeHolder="search by name" id="searchByName" src="images/assets/lupa.png"
-          autocomplete="off"></input>
+        <input type="search" placeholder="Search by name" id="searchByName" src="images/assets/lupa.png" autocomplete="off">
       </section>
 
       <select class="subheaderSection" id="order">
@@ -210,7 +207,7 @@
         <section class="modalContent">
           <p id="xClose" class="close">X</p>
           <section id="informationModal">
-            <img id="photoModal" src="" alt="">
+            <img id="photoModal" src="main.js" alt="">
             <section id="paragraphModal">
               <h2>IDENTIFICATION CARD</h2>
               <p id="statusModal" class="modalInfo">Status:</p>
@@ -323,8 +320,12 @@
 
   <section id="statisticsSection" class="hide">
     <canvas id="chart" width="800" height="400"></canvas>
+  </section>
+  <section class="goTopContainer">
+    <button class="goTopButton">
+      <i class="fa fa-chevron-up"></i>
 
-
+    </button>
   </section>
 
   <!--footer section -->
@@ -343,7 +344,7 @@
       <p class="lineFooterDecoration">|</p>
       <!-- <img src="images/rickFooter.png" alt="Icono de Footer"> -->
       <section class="footerText">
-        <p> <strong>Laboratoria <br> LIM-014</p>  </strong> 
+        <p> <strong>Laboratoria<br> LIM-014 </strong>  </p>  
         <span>© <a href="https://github.com/MarytereBenavides/LIM014-data-lovers" target="_blank" >Marytere</a>
           <span>-</span>
           <a href="https://github.com/Raquel-95/LIM014-data-lovers" target="_blank" >Raquel</a></span>
@@ -352,9 +353,11 @@
       
     </section>
   </footer>
-  <script src="main.js" type="module" document.addEventListener("DOMContentLoaded", drawCharactersPage);></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
-  <script src="mainApi.js" type="module"></script>
+  <script src="main.js" type="module"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js">
+  </script>
+  <script src="mainApi.js" type="module">
+  </script>
   
 </body>
 
