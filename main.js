@@ -1,4 +1,3 @@
-
 import { dataSort, filterData } from './data.js'
 import data from './data/rickandmorty/rickandmorty.js';
 let allCharacters = data.results;
@@ -132,6 +131,7 @@ function showModal(item) {
 
   let characterEpisode = document.getElementById('episodeModal');
   characterEpisode.innerHTML = "<b>Episode: </b>" + episodes;
+  // console.log(episodes);
 }
 
 const close = document.getElementById("xClose");
@@ -151,6 +151,7 @@ let displayFooter = document.getElementById("footerSection");
 // let displayAbout = document.getElementById("aboutSection");
 let displayStatistics = document.getElementById("statisticsSection");
 let displayAdvancedFilter = document.getElementById("advancedFilter");
+let displayTop = document.getElementById("goTopContainer");
 
 // ***********************************************************click start home**************1
 document.querySelector('#btnFirst').addEventListener('click', getEnter);
@@ -209,14 +210,21 @@ function statisticsInfo(){
   // ********************************************remove oothers about and stat******
   // displayAbout.classList.add("hide");
   displayStatistics.classList.remove("hide");
-
+  displayTop.classList.add("hide");
+  displayAdvancedFilter.classList.add("hide");
 }
+
 
 // Hamburguer show advancedFilter
 const iconMenu = document.querySelector('#iconBars'),
 menu = document.querySelector('#advancedFilter');
 iconMenu.addEventListener('click', () => {
   menu.classList.toggle('active');
+})
+
+const iconHome = document.querySelector('#homeButton');
+iconHome.addEventListener('click', () => {
+  showFilter();
 })
 
 const iconMenuSecond = document.querySelector('#iconBars1');
@@ -231,6 +239,8 @@ function showFilter(){
   displayCharacters.classList.remove("hide");
   displayAdvancedFilter.classList.remove("hide");
   displayStatistics.classList.add("hide");
+  displayTop.classList.remove("hide");
+  
 
 }
 
@@ -317,6 +327,150 @@ for(var i = 0; i < selectTags.length; i++) {
 }  
 searchFilter();
 })
+
+
+
+/*******************calculo agrega*************/
+
+function aggregateCalculation () {
+  let calculation = { //lista para que los filtros inicien vacios.
+    name: '',
+    order: '',
+    status: '',
+    species: '',
+    gender: '',
+    origin: '',
+    episode: ''
+  }
+  
+calculation.status = 'Alive';
+let resultCalculationStatus = filterData(allCharacters, calculation);
+let alive = document.getElementById('alive');
+alive.innerHTML = resultCalculationStatus.length;
+let percentAlive = document.getElementById('percentAlive');
+percentAlive.innerHTML = Math.round(resultCalculationStatus.length/allCharacters.length*100) + "%";
+
+
+calculation.status = 'Dead';
+resultCalculationStatus = filterData(allCharacters, calculation);
+let dead = document.getElementById('dead');
+dead.innerHTML = resultCalculationStatus.length;
+let percentDead = document.getElementById('percentDead');
+percentDead.innerHTML = Math.round(resultCalculationStatus.length/allCharacters.length*100) + "%";
+
+calculation.status = 'unknown';
+resultCalculationStatus = filterData(allCharacters, calculation);
+let statusUnknown = document.getElementById('statusUnknown');
+statusUnknown.innerHTML = resultCalculationStatus.length;
+let percentStatusUnknown = document.getElementById('percentStatusUnknown')
+percentStatusUnknown.innerHTML = Math.round(resultCalculationStatus.length/allCharacters.length*100) + "%";
+
+chartStatus(alive.innerHTML, dead.innerHTML, statusUnknown.innerHTML);
+calculation.status = '';
+calculation.gender = 'Female';
+let resultCalculationGender = filterData(allCharacters, calculation);
+let female = document.getElementById('female');
+female.innerHTML = resultCalculationGender.length;
+let percentFemale = document.getElementById('percentFemale');
+percentFemale.innerHTML = Math.round(resultCalculationGender.length/allCharacters.length*100) + "%";
+
+calculation.gender = 'Male';
+resultCalculationGender = filterData(allCharacters, calculation);
+let male = document.getElementById('male');
+male.innerHTML = resultCalculationGender.length;
+let percentMale = document.getElementById('percentMale');
+percentMale.innerHTML = Math.round(resultCalculationGender.length/allCharacters.length*100) + "%";
+
+calculation.gender = 'Genderless';
+resultCalculationGender = filterData(allCharacters, calculation);
+let genderless = document.getElementById('genderless');
+genderless.innerHTML = resultCalculationGender.length;
+let percentGenderless = document.getElementById('percentGenderless');
+percentGenderless.innerHTML = Math.round(resultCalculationGender.length/allCharacters.length*100) + "%";
+
+calculation.gender = 'unknown';
+resultCalculationGender = filterData(allCharacters, calculation);
+let unknownGender = document.getElementById('unknownGender');
+unknownGender.innerHTML = resultCalculationGender.length;
+let percentUnknownGender = document.getElementById('percentUnknownGender');
+percentUnknownGender.innerHTML = Math.round(resultCalculationGender.length/allCharacters.length*100) + "%";
+chartGender(female.innerHTML, male.innerHTML, genderless.innerHTML, unknownGender.innerHTML);
+}
+aggregateCalculation();
+
+function chartStatus (alive, dead, statusUnknown) {
+    // eslint-disable-next-line no-undef
+    Chart.defaults.global.defaultFontColor = 'white';
+    let ctx = document.getElementById('myChart').getContext('2d');
+    // eslint-disable-next-line no-undef
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Alive', 'Dead', 'Unknown'],
+            datasets: [{
+                label: 'Status',
+                data: [alive, dead, statusUnknown],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+}
+
+function chartGender (female, male, genderless, unknownGender) {
+  let ctx = document.getElementById('myChartGender').getContext('2d');
+  // eslint-disable-next-line no-undef
+  new Chart(ctx, {
+      type: 'pie',
+      data: {
+          labels: ['Female', 'Male', 'Genderless', 'Unknown'],
+          datasets: [{
+              label: 'Gender',
+              data: [female, male, genderless, unknownGender],
+              backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(153, 102, 255, 0.2)'
+              ],
+              borderColor: [
+                  'rgba(255, 99, 132, 1)',
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)',
+                  'rgba(153, 102, 255, 1)'
+              ],
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }]
+          }
+      }
+  });
+}
 
 // *************************go top button
 window.onscroll = function(){
