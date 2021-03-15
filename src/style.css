@@ -696,26 +696,11 @@ footer .allRightsReserved{
 }
 /* ********************************************* */
 
-/* #aboutSection{
-  display: flex;
-  width: 80%;
-  justify-content: center;
-  margin: 40px 10%;
-  flex-wrap: wrap;
-  background-color: rgba(255, 255, 255, 0.863);
-} */
-
-
 .imgFamilyAbout{
   width: 400px;
   height: 260px;
   margin: 0px 20px;
 }
-/* .firstPart{
-  width: 100%;
-  display: flex;
-  background-color: #89cf10;
-} */
 
 /* button go top */
 .goTopContainer{
