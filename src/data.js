@@ -1,4 +1,4 @@
-// estas funciones son de ejemplo
+export const filterData = (allCharacters, filterConfig) => {
 
   let result = [];
   if (filterConfig.status != "") {
