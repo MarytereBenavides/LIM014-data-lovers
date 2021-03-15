@@ -36,7 +36,7 @@ function drawResults(arrayOfCharacters) {
       let currentButton = document.querySelector(".buttonsContainer button.active");
       currentButton.classList.remove("active");
       button.classList.add("active");
-    });
+    },false);
     buttonsContainer.appendChild(button);
   }
 
@@ -78,7 +78,7 @@ function drawCharactersPage(index, arrayOfCharacters) {
     elementDiv.addEventListener('click', () => {
       showModal(result);
 
-    });
+    }, false);
 
 
   }
@@ -137,7 +137,7 @@ const close = document.getElementById("xClose");
 close.addEventListener('click', () => {
   let myModal = document.getElementById('myModal');
   myModal.style.visibility = "hidden";
-})
+}, false)
 
 
 // ***********************************************************Searching**************1
@@ -153,7 +153,7 @@ let displayAdvancedFilter = document.getElementById("advancedFilter");
 let displayTop = document.getElementById("goTopContainer");
 
 // ***********************************************************click start home**************1
-document.querySelector('#btnFirst').addEventListener('click', getEnter);
+document.querySelector('#btnFirst').addEventListener('click', getEnter, false);
 function getEnter() {
   displayHome.classList.add("hide");
   displayLogo.classList.remove("hide");
@@ -167,7 +167,7 @@ function getEnter() {
 
 
 // *******************************************************************************************click and return************2
-document.querySelector('#boxName').addEventListener('click', previousMain);
+document.querySelector('#boxName').addEventListener('click', previousMain, false);
 
 function previousMain() {
   // *************************************************show start home ******
@@ -200,7 +200,7 @@ function previousMain() {
 //   displayStatistics.classList.add("hide");
 // }
 
-document.querySelector('#statisticsbutton').addEventListener('click', statisticsInfo);
+document.querySelector('#statisticsbutton').addEventListener('click', statisticsInfo, false);
 
 function statisticsInfo(){
   displaySubheader.classList.add("hide");
@@ -219,19 +219,19 @@ const iconMenu = document.querySelector('#iconBars'),
 menu = document.querySelector('#advancedFilter');
 iconMenu.addEventListener('click', () => {
   menu.classList.toggle('active');
-})
+}, false)
 
 const iconHome = document.querySelector('#homeButton');
 iconHome.addEventListener('click', () => {
   showFilter();
-})
+}, false)
 
 const iconMenuSecond = document.querySelector('#iconBars1');
 iconMenuSecond.addEventListener('click', () => {
   menu.classList.toggle('active');
-})
+}, false)
 
-document.querySelector('#iconBars').addEventListener('click', showFilter);
+document.querySelector('#iconBars').addEventListener('click', showFilter, false);
 
 function showFilter(){
   displaySubheader.classList.remove("hide");
@@ -252,7 +252,7 @@ orderAll.addEventListener("change", (event) => {
   //pasamos la lista filtrada en vez de la lista completa.
   // const ordenO = Object.entries(sortData);
   return drawResults(sortData);
-});
+}, false);
 
 // **********************************************************order data status
 const orderByStatus = document.querySelector("#stateLife"); //querySelector funciona como getElementById pero con varios selectores.
@@ -264,28 +264,28 @@ const searchBar = document.getElementById('searchByName');
 
 orderByStatus.addEventListener("change", () => {
   searchFilter();
-});
+}, false);
 
 orderBySpecies.addEventListener("change", () => {
   searchFilter();
-});
+}, false);
 
 orderByGender.addEventListener("change", () => {
   searchFilter();
-});
+}, false);
 
 orderByOrigin.addEventListener("change", () => {
   searchFilter();
-});
+}, false);
 
 orderByEpisodes.addEventListener("change", () => {
   searchFilter();
-});
+}, false);
 
 searchBar.addEventListener('keyup', () => {
   searchFilter();
   
-});
+}, false);
 
 
 function searchFilter() {
@@ -323,7 +323,7 @@ for(var i = 0; i < selectTags.length; i++) {
   selectTags[i].selectedIndex =0;
 }  
 searchFilter();
-})
+}, false)
 
 /*******************calculo agrega*************/
 
@@ -482,4 +482,4 @@ document.querySelector('.goTopContainer').addEventListener('click', () => {
     top: 0,
     behavior: 'smooth'
   });
-});
+}, false);

@@ -623,7 +623,7 @@ div:active{
 
 #buttonsContainer .active{
   background:greenyellow;
-  color:white;
+  color:rgb(0, 0, 0);
 }
 
 body .navegation{
@@ -1277,6 +1277,4 @@ div:hover {
   .modalInfo{
     border: none;  
   }
-
-
 }
