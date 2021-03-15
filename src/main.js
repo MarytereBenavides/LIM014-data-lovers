@@ -1,6 +1,3 @@
-import { dataSort, filterData } from './data.js'
-import data from './data/rickandmorty/rickandmorty.js';
-let allCharacters = data.results;
 
 let listFilter = allCharacters; //para guardar lo que se está filtrando. 
 
@@ -483,3 +480,4 @@ document.querySelector('.goTopContainer').addEventListener('click', () => {
     behavior: 'smooth'
   });
 }, false);
+

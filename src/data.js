@@ -1,4 +1,4 @@
-export const filterData = (allCharacters, filterConfig) => {
+// estas funciones son de ejemplo
 
   let result = [];
   if (filterConfig.status != "") {

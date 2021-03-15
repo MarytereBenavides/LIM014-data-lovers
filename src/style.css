@@ -1,3 +1,4 @@
+
 @font-face {
   font-family: 'letterRickandMorty'; /*a name to be used later*/
   src: url('assets/fonts/get_schwifty.ttf'); /*URL to font*/
@@ -1278,3 +1279,4 @@ div:hover {
     border: none;  
   }
 }
+
